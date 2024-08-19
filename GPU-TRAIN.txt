@@ -1,0 +1,44 @@
+import torch
+from ultralytics import YOLO
+import time
+
+def main():
+    # Check CUDA availability
+    if torch.cuda.is_available():
+        print(f"CUDA is available. Using GPU: {torch.cuda.get_device_name(0)}")
+    else:
+        print("CUDA is not available. Using CPU.")
+
+    # Ensure the correct device is being used
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    print(f"Device selected: {device}")
+
+    # Load the YOLO model
+    model = YOLO('yolov8n.pt')
+
+    #Augmentation
+    
+
+    # Train the model
+    results = model.train(
+        data=r"C:\Users\Admin\Documents\Litter Audit Project\Dataset\Taco_Dataset\TACO Dataset.v1-taco-dataset-test.yolov8-obb\data.yaml",
+        epochs=50,
+        optimizer='Adam',
+        plots=True,
+        patience=10,
+        batch=16,
+        pretrained = True,
+        amp = False,
+        hsv_h=0.015, #Hue
+        hsv_s=0.6, #Saturation
+        degrees=180, #rotation of object 
+        shear=20, #different angles
+        bgr=0.2,
+        copy_paste=0.5,
+        device=device  # Use the device explicitly
+    )
+    # Patience controls the amount of epochs that can happen without an increase in accuray before the cycle stops.
+    # Plot tells the code to plot the results in multiple graphs. 
+
+if __name__ == '__main__':
+    main()
