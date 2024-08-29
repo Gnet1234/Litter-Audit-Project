@@ -1,2 +1,2 @@
-
 This folder contains all the information needed to train the model with Yolo. It’s formatted to be trained with Yolov8, and can be trained with custom perimeters. Further details can be found in the report on how to train it, while GPU-TRAIN can be used to train it and change certain parameters. 
+Here is a link to the dataset information: 
