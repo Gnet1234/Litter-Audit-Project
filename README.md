@@ -17,3 +17,4 @@ Final_Version: This code captures the video from the drone, and passes it throug
 Final_Version_Model.pt: This is a file used to access the trained model using the dataset found in the Final_Dataset_Information folder. 
 
 Further details can be found in the report.
+This project was made with the help of Min Khant Tun, his github can be found here: https://github.com/RVZZVK
