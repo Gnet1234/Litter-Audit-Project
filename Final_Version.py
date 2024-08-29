@@ -132,15 +132,17 @@ class StreamingExample:
         while running.is_set():
             try:
                 yuv_data, height, width = self.frame_queue.get(timeout=0.1)
-            except queue.Empty:
-                continue
-            # Convert YUV data to OpenCV format
-            yuv_data = yuv_data.reshape((height * 3 // 2, width))
-            bgr_frame = cv2.cvtColor(yuv_data, cv2.COLOR_YUV2BGR_I420)
-            results = model(bgr_frame)
-            # Plot boundary & image masking from obtained results in f2f format
-            annotated_frame = results[0].plot()
-            self.processed_frame_queue.put(annotated_frame)
+                yuv_data = yuv_data.reshape((height * 3 // 2, width))
+                bgr_frame = cv2.cvtColor(yuv_data, cv2.COLOR_YUV2BGR_I420)
+                results = model(bgr_frame)
+                annotated_frame = results[0].plot()
+                self.processed_frame_queue.put(annotated_frame)
+            except cv2.error as e:
+                logging.error(f"OpenCV error: {e}")
+                print("We have a cv2 error.")
+            except Exception as e:
+                logging.error(f"Unexpected error: {e}")
+                print("We have a unexpected error.")
 
     def process_video_output(self):
         while self.running.is_set():
