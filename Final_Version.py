@@ -138,10 +138,8 @@ class StreamingExample:
                 annotated_frame = results[0].plot()
                 self.processed_frame_queue.put(annotated_frame)
             except cv2.error as e:
-                logging.error(f"OpenCV error: {e}")
                 print("We have a cv2 error.")
             except Exception as e:
-                logging.error(f"Unexpected error: {e}")
                 print("We have a unexpected error.")
 
     def process_video_output(self):
