@@ -8,6 +8,8 @@ Yolo can be installed with this: pip install ultralytics
 
 More information can be found here: https://docs.ultralytics.com
 
+Robobflow was used to help format the dataset: https://universe.roboflow.com/litter-e1hys/litter_audits_segmentation
+
 The following codes show the steps that were taken to develop the objective, and are in the Important Files forlder:
 
 GPU-TRAIN: This code trains the model, using the GPU of the computer. It uses cuda to achieve this, and it was used with a windows laptop with a nvidia GPU.
