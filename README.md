@@ -12,7 +12,7 @@ The following codes show the steps that were taken to develop the objective, and
 
 GPU-TRAIN: This code trains the model, using the GPU of the computer. It uses cuda to achieve this, and it was used with a windows laptop with a nvidia GPU.
 
-Final_Version: This code captures the video from the drone, and passes it through the object detection model. It uses a dataframe to log the detected objects, and save it to an excel file when the code is finished. It's also able to control the motion of the drone with the inputs library. It also uses a model trained on a custom dataset, it's called Water_Can_Version2.pt.
+Final_Version: This code captures the video from the drone, and passes it through the object detection model. It uses a dataframe to log the detected objects, and save it to an excel file when the code is finished. It's also able to control the motion of the drone with the inputs library. It also uses a model trained on a custom segmented dataset. The data given on this github can be used. 
 
 Final_Version_Model.pt: This is a file used to access the trained model using the dataset found in the Final_Dataset_Information folder. 
 
