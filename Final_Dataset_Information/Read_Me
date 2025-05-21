@@ -1,2 +1,2 @@
 Here is a page to the roboflow page, so the dataset can be further developed: https://universe.roboflow.com/litter-e1hys/litter_audits_segmentation
-Best.pt would be the model with the best performance while the other .pt file would be the last one before it was stopped.
+Best.pt would be the model with the best performance while the other last.pt file would be the last one before it was stopped.
