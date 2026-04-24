@@ -1,0 +1,15 @@
+import numpy as np
+
+midas_values = [376.7, 412.4, 439.6, 445.7, 451.8, 492.2]
+real_distances = [60, 90, 120, 150, 180, 210]
+
+x = np.array(midas_values)
+y = np.array(real_distances)
+
+coeff = np.polyfit(x, y, 2)
+
+a, b, c = coeff
+
+print("a =", a)
+print("b =", b)
+print("c =", c)
