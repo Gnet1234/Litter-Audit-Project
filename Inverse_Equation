@@ -1,0 +1,58 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# -----------------------------
+# Calibration data
+# -----------------------------
+midas_values = [376.7, 412.4, 439.6, 445.7, 451.8, 492.2]
+real_distances = [60, 90, 120, 150, 180, 210]
+
+x = np.array(midas_values)
+y = np.array(real_distances)
+
+# -----------------------------
+# Transform variable
+# u = 1/x
+# -----------------------------
+u = 1 / x
+
+# -----------------------------
+# Solve least squares for
+# Z = a*u + b
+# -----------------------------
+u_mean = np.mean(u)
+y_mean = np.mean(y)
+
+a = np.sum((u - u_mean) * (y - y_mean)) / np.sum((u - u_mean) ** 2)
+b = y_mean - a * u_mean
+
+print("Inverse depth model:")
+print(f"Z = {a:.4f}/x + {b:.4f}")
+
+# -----------------------------
+# Predict distances
+# -----------------------------
+predicted = a / x + b
+
+# -----------------------------
+# Compute RMSE error
+# -----------------------------
+rmse = np.sqrt(np.mean((predicted - y) ** 2))
+print("RMSE:", rmse)
+
+# -----------------------------
+# Plot results
+# -----------------------------
+x_range = np.linspace(min(x), max(x), 100)
+curve = a / x_range + b
+
+plt.scatter(x, y, label="Measured Data")
+plt.plot(x_range, curve, label="Inverse Model", color="red")
+
+plt.xlabel("MiDaS Depth Output")
+plt.ylabel("Real Distance (cm)")
+plt.title("Inverse Depth Calibration")
+plt.legend()
+plt.savefig("inverse_depth_fit.png")
+print("Graph saved as inverse_depth_fit.png")
+plt.show()
